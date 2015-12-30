@@ -1,0 +1,8 @@
+<div class="comment well">
+  <p>
+    <%= comment.body %>
+  </p>
+  <p class="text-right">
+    <%= comment.user.email %> | <%= comment.created_at.strftime("%e %b, %Y") %>
+  </p>
+</div>

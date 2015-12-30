@@ -4,3 +4,9 @@
 </p>
 
 <h3>Comments</h3>
+<%= simple_form_for [@post, @new_comment], html: {class: "well"} do |f| %>
+  <%= f.input :body, label: false %>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
+<% end %>
+
+<%= render @comments %>
