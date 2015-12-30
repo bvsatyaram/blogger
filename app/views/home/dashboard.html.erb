@@ -1,0 +1,55 @@
+<div id="dashboard">
+  <h1>Leaderboard</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          User
+        </th>
+        <th>
+          Points
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% User.all.to_a.sort_by!{|usr| usr.score}.reverse.each do |usr| %>
+          <tr class="<%= (usr == current_user) ? 'info' : '' %>">
+            <td>
+              <%= usr.email %>
+            </td>
+            <td>
+              <%= usr.score %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h1>Accomplishments:</h1>
+  <table class="table">
+    <tr>
+      <td>
+        Post Created:
+      </td>
+      <td>
+        <%= current_user.posts_count %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Comments Written:
+      </td>
+      <td>
+        <%= current_user.outgoing_comments_count %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Comments Received:
+      </td>
+      <td>
+        <%= current_user.incoming_comments_count %>
+      </td>
+    </tr>
+  </table>
+</div>

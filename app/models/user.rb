@@ -24,4 +24,27 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
+  has_many :comments
+
+  def posts_count
+   self.posts.count
+  end
+
+  def outgoing_comments_count
+    self.comments.select do |comment|
+      comment.post.user != self
+    end.count
+  end
+
+  def incoming_comments_count
+    self.posts.collect do |post|
+      post.comments.select do |comment|
+        comment.user != self
+      end.count
+    end.reduce(:+)
+  end
+
+  def score
+    return 10*self.posts_count + 3*self.outgoing_comments_count + self.incoming_comments_count
+  end
 end

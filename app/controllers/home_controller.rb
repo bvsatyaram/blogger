@@ -1,4 +1,4 @@
 class HomeController < ApplicationController
-  def land
+  def dashboard
   end
 end
