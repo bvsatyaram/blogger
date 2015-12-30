@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     if params[:mine]
-      @posts = current_user.posts
+      @posts = current_user.posts.includes(:comments).all
     else
       @posts = Post.includes(:comments, :user).all
     end
