@@ -3,9 +3,9 @@ class PostsController < ApplicationController
 
   def index
     if params[:mine]
-      @posts = current_user.posts
+      @posts = current_user.posts.includes(:comments).all
     else
-      @posts = Post.all
+      @posts = Post.includes(:comments, :user).all
     end
   end
 
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.for_display.all
+    @comments = @post.comments.includes(:user).for_display.all
     @new_comment = @post.comments.new
   end
 
