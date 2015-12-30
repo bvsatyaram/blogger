@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'annotate'
 
 group :development, :test do
   gem 'byebug'
