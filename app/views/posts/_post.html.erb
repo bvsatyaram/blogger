@@ -4,6 +4,6 @@
     <%= post.body %>
   </p>
   <p class="text-right">
-    <%= post.user.email %> | <%= post.created_at.strftime("%e %b, %Y") %> | <%= pluralize post.comments.count, "comment" %>
+    <%= post.user.email %> | <%= post.created_at.strftime("%e %b, %Y") %> | <%= pluralize post.comments.size, "comment" %>
   </p>
 </div>

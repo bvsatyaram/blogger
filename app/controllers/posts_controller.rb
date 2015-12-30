@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if params[:mine]
       @posts = current_user.posts
     else
-      @posts = Post.all
+      @posts = Post.includes(:comments).all
     end
   end
 
