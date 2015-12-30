@@ -15,19 +15,20 @@
         <% if user_signed_in? %>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <%= link_to "Create a Post", new_post_path %>
+              <%= link_to "Add a Post", new_post_path %>
             </li>
             <li>
-              <%= link_to "Dashboard", "#" %>
+              <%= link_to "All Posts", posts_path %>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li>
+                  <%= link_to "My Posts", posts_path(mine: true) %>
+                </li>
+                <li>
+                  <%= link_to "Dashboard", "#" %>
+                </li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Logout", destroy_user_session_path, method: :delete %>

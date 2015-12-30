@@ -1,0 +1,7 @@
+<h1>Add a New Post</h1>
+
+<%= simple_form_for @post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.submit "Add Post", class: "btn btn-primary btn-lg" %>
+<% end %>

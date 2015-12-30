@@ -1,0 +1,9 @@
+<div class="post well">
+  <h3><%= post.title %></h3>
+  <p>
+    <%= post.body %>
+  </p>
+  <p class="text-right">
+    <%= post.user.email %> | <%= post.created_at.strftime("%e %b, %Y") %>
+  </p>
+</div>
