@@ -23,8 +23,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments.for_display.all
+    @post = Post.includes(:comments).find(params[:id])
+    @comments = @post.comments.reverse
     @new_comment = @post.comments.new
   end
 

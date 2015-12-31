@@ -7,49 +7,39 @@
           User
         </th>
         <th>
+          Posts Authored
+        </th>
+        <th>
+          Comments Made
+        </th>
+        <th>
+          Comments Received
+        </th>
+        <th>
           Points
         </th>
       </tr>
     </thead>
     <tbody>
-      <% User.all.to_a.sort_by!{|usr| usr.score}.reverse.each do |usr| %>
-          <tr class="<%= (usr == current_user) ? 'info' : '' %>">
+      <% @leader_board.each do |usr| %>
+          <tr class="<%= (usr[:email] == current_user.email) ? 'info' : '' %>">
             <td>
-              <%= usr.email %>
+              <%= usr[:email] %>
             </td>
             <td>
-              <%= usr.score %>
+              <%= usr[:posts_count] %>
+            </td>
+            <td>
+              <%= usr[:outgoing_comments_count] %>
+            </td>
+            <td>
+              <%= usr[:incoming_comments_count] %>
+            </td>
+            <td>
+              <%= usr[:score] %>
             </td>
           </tr>
       <% end %>
     </tbody>
-  </table>
-
-  <h1>Accomplishments:</h1>
-  <table class="table">
-    <tr>
-      <td>
-        Post Created:
-      </td>
-      <td>
-        <%= current_user.posts_count %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Comments Written:
-      </td>
-      <td>
-        <%= current_user.outgoing_comments_count %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Comments Received:
-      </td>
-      <td>
-        <%= current_user.incoming_comments_count %>
-      </td>
-    </tr>
   </table>
 </div>
